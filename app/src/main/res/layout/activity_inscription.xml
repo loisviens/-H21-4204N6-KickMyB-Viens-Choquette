@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/signupText"
-        android:layout_width="289dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginLeft="60dp"
-        android:layout_marginTop="88dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_margin="20dp"
         android:gravity="center"
         android:text="Veuillez remplir les informations \n ci-dessous pour vous inscrire."
         android:textSize="20sp"
@@ -24,9 +25,8 @@
         android:id="@+id/signupName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="152dp"
+        android:padding="10dp"
+        android:layout_margin="10dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Nom d'utilisateur"
@@ -37,9 +37,8 @@
         android:id="@+id/signupPS"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="280dp"
+        android:padding="10dp"
+        android:layout_margin="10dp"
         android:ems="10"
         android:inputType="textPassword"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,9 +48,8 @@
         android:id="@+id/signupPSConfirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="216dp"
+        android:padding="10dp"
+        android:layout_margin="10dp"
         android:ems="10"
         android:inputType="textPassword"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,10 +59,10 @@
         android:id="@+id/signupBTNinscrire"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="136dp"
-        android:layout_marginLeft="136dp"
-        android:layout_marginTop="348dp"
+        android:padding="10dp"
         android:text="s'inscrire"
+        android:textColor="@color/black"
+        android:backgroundTint="#b1e2e3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -72,12 +70,12 @@
         android:id="@+id/signupBTNRetour"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="148dp"
-        android:layout_marginLeft="148dp"
-        android:layout_marginTop="412dp"
+        android:padding="10dp"
         android:text="Retour"
+        android:textColor="@color/black"
+        android:backgroundTint="#b1e2e3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

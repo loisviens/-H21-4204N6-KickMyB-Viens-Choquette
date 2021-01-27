@@ -6,6 +6,10 @@ android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
 
+    buildFeatures {
+        viewBinding true
+    }
+
     defaultConfig {
         applicationId "com.vienschoquette.h21_4204n6_kickmyb_viens_choquette"
         minSdkVersion 16
