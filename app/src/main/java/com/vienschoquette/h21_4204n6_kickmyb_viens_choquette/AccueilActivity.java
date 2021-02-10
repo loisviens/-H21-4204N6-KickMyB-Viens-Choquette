@@ -16,7 +16,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
 
-public class AcceuilActivity extends AppCompatActivity {
+public class AccueilActivity extends AppCompatActivity {
     private ActivityAcceuilBinding binding;
     TachesAdapter adapter;
 
@@ -24,6 +24,7 @@ public class AcceuilActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inscription);
+        setTitle("Acceuil");
 
         binding = ActivityAcceuilBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();

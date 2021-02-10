@@ -3,7 +3,6 @@ package com.vienschoquette.h21_4204n6_kickmyb_viens_choquette;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setTitle("Connection");
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         binding.loginBTNconnection.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this,AcceuilActivity.class);
+                Intent i = new Intent(MainActivity.this, AccueilActivity.class);
 //                i.putExtra("Nom", binding.loginName.getText().toString());
 //                i.putExtra("MDP", binding.loginPS.getText().toString());
                 startActivity(i);

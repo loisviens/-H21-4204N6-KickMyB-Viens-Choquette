@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.vienschoquette.h21_4204n6_kickmyb_viens_choquette.databinding.TachesItemBinding;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -64,7 +66,8 @@ public class TachesAdapter extends RecyclerView.Adapter<TachesAdapter.MyViewHold
             @Override
             public void onClick(View v) {
                 //Intent i = new Intent( holder.itemView.getContext(),InscriptionActivity.class);
-                Intent i = new Intent( v.getContext() ,InscriptionActivity.class);
+                Intent i = new Intent( v.getContext() ,ConsultationActivity.class);
+                i.putExtra("Position", position);
                 v.getContext().startActivity(i);
             }
         });

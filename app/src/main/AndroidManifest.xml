@@ -21,7 +21,10 @@
         <activity android:name=".InscriptionActivity">
         </activity>
 
-        <activity android:name=".AcceuilActivity">
+        <activity android:name=".AccueilActivity">
+        </activity>
+
+        <activity android:name=".ConsultationActivity">
         </activity>
 
     </application>

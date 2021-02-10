@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="left"
+    tools:context=".MainActivity">
+
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="left"
+    android:layout_weight="1">
+
+    <TextView
+        android:id="@+id/consultationNom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:gravity="left"
+        android:text="Nom d'activité: \n Greg"
+        android:textSize="20sp" />
+    <TextView
+        android:id="@+id/consultationDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:text="Échéance:\n 2021-03-25"
+        android:textSize="20sp" />
+    <TextView
+        android:id="@+id/consultationTempsEcouler"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:gravity="left"
+        android:text="TempsEcouler: \n 1 Jour \n 5 Heurs \n 13 minutes"
+        android:textSize="20sp" />
+</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_weight="13">
+
+   <com.github.mikephil.charting.charts.PieChart
+       android:id="@+id/consultationPieChart"
+       android:layout_width="match_parent"
+       android:layout_height="200dp"
+
+       />
+
+        <Button
+            android:id="@+id/consultationBTNRetour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="Retour"
+            android:backgroundTint="#b1e2e3"
+            android:textColor="@color/black"/>
+    </LinearLayout>
+
+
+
+
+</LinearLayout>
