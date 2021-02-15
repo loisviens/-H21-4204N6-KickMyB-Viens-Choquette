@@ -9,6 +9,19 @@
     android:gravity="center"
     tools:context=".MainActivity">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        >
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        />
+    </com.google.android.material.appbar.AppBarLayout>
+
     <TextView
         android:id="@+id/acceuilText"
         android:layout_width="wrap_content"

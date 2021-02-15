@@ -34,6 +34,8 @@ public class AccueilActivity extends AppCompatActivity {
         this.initRecycler();
         this.remplirRecycler();
 
+        setSupportActionBar(binding.toolbar);
+
         binding.acceuilpBTNRetour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
