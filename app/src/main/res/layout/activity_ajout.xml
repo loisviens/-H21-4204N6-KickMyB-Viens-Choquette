@@ -10,14 +10,35 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/acceuilText"
+        android:id="@+id/AjoutText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:gravity="center"
+        android:text="Page d'ajout.\nVous pouvez créer une tache ici.\nIl suffit de replier les informations et cliquer le bouton 'AJOUT'."
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/ajoutNom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:ems="15"
+        android:inputType="textPersonName"
+        android:text="Nom de la tache"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <DatePicker
+        android:id="@+id/ajoutDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:layout_margin="20dp"
-        android:gravity="center"
-        android:text="Page d'acceuil. \n Rest de la pasge en construction..."
-        android:textSize="20sp"
+        android:layout_margin="10dp"
+        android:ems="15"
+        android:inputType="textPersonName"
+        android:text="Date limite de la tache"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,7 +47,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <Button
-            android:id="@+id/acceuilpBTNRetour"
+            android:id="@+id/AjoutBTNRetour"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
@@ -39,7 +60,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="12dp"/>
         <Button
-            android:id="@+id/acceuilpBTNAjout"
+            android:id="@+id/AjoutBTNAjout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
@@ -54,14 +75,6 @@
             android:layout_marginRight="20dp"/>
 
     </LinearLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_margin="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#cba"
-        />
 
 
 </LinearLayout>

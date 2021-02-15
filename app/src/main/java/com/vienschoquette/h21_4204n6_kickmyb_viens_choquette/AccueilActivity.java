@@ -1,5 +1,6 @@
 package com.vienschoquette.h21_4204n6_kickmyb_viens_choquette;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -37,6 +38,16 @@ public class AccueilActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+        binding.acceuilpBTNAjout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(AccueilActivity.this, AjoutActivity.class);
+//                i.putExtra("Nom", binding.loginName.getText().toString());
+//                i.putExtra("MDP", binding.loginPS.getText().toString());
+                startActivity(i);
+
             }
         });
     }
