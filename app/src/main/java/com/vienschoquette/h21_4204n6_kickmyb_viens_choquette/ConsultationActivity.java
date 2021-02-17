@@ -15,22 +15,26 @@ import java.util.Calendar;
 
 public class ConsultationActivity extends AppCompatActivity {
     private ActivityConsultationBinding binding;
-    PieChart chart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_consultation);
+
         setTitle(getIntent().getStringExtra("Position"));
 
         binding = ActivityConsultationBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
 
-        chart = findViewById(R.id.consultationPieChart);
+        binding.consultationProgressBar.setProgress(75);
 
-        chart.setMaxAngle(100);
- //chart.setProgress(4);
+        binding.consultationBTNProgressChange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                binding.consultationProgressBar.setProgress(
+                        Integer.parseInt(binding.consultationTextProgressChange.getText().toString()));
+            }
+        });
 
         binding.consultationBTNRetour.setOnClickListener(new View.OnClickListener() {
             @Override
