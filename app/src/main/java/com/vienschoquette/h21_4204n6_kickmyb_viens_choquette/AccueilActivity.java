@@ -2,13 +2,16 @@ package com.vienschoquette.h21_4204n6_kickmyb_viens_choquette;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.navigation.NavigationView;
 import com.vienschoquette.h21_4204n6_kickmyb_viens_choquette.databinding.ActivityAcceuilBinding;
 import com.vienschoquette.h21_4204n6_kickmyb_viens_choquette.databinding.ActivityInscriptionBinding;
 
@@ -49,6 +52,14 @@ public class AccueilActivity extends AppCompatActivity {
 //                i.putExtra("MDP", binding.loginPS.getText().toString());
                 startActivity(i);
 
+            }
+        });
+        binding.navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                if (item.toString() == "31")
+                {return false;}
+                return false;
             }
         });
     }

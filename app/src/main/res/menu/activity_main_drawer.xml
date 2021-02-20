@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group>
+        <item
+            android:id="@+id/nav_accueil"
+            android:icon="@drawable/ic_launcher_background"
+            android:title="Acceuil" />
+        <item
+            android:id="@+id/nav_ajout"
+            android:icon="@drawable/ic_launcher_background"
+            android:title="Ajout" />
+        <item
+            android:id="@+id/nav_deconnection"
+            android:icon="@drawable/ic_launcher_background"
+            android:title="Deconnection" />
+    </group>
+</menu>
