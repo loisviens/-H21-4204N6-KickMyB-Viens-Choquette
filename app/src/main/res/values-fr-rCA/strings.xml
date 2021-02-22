@@ -1,2 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="app_name">H21-4204N6-KickMyB-Viens-Choquette</string>
+    <string name="drawerOpen">Fermer</string>
+    <string name="drawerClose">Ouvrir</string>
+</resources>

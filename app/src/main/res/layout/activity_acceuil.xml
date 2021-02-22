@@ -6,15 +6,11 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
     tools:openDrawer="start">
 
 
 
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -40,7 +36,7 @@
         android:padding="10dp"
         android:layout_margin="20dp"
         android:gravity="center"
-        android:text="Page d'acceuil. \n Rest de la pasge en construction..."
+        android:text="Bienvenue a la page d'accueil \n Vous pouvez tout voir a partir d'ici"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -54,7 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="Retour"
+            android:text="Déconnection"
             android:textColor="@color/black"
             android:backgroundTint="#b1e2e3"
             app:layout_constraintStart_toStartOf="parent"
@@ -95,9 +91,9 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        app:menu="@menu/activity_main_drawer"/>
-            /*app:headerLayout="@layout/nav_header_main"*/
-        />
+        app:menu="@menu/activity_main_drawer"
+        app:headerLayout="@menu/nav_header_main"/>
+
 
 
 </androidx.drawerlayout.widget.DrawerLayout>
