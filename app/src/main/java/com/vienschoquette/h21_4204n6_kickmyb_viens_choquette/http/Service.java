@@ -3,16 +3,24 @@ package com.vienschoquette.h21_4204n6_kickmyb_viens_choquette.http;
 import com.vienschoquette.h21_4204n6_kickmyb_viens_choquette.transfer.Repo;
 import com.vienschoquette.h21_4204n6_kickmyb_viens_choquette.transfer.Utilisateur;
 
+import org.kickmyb.transfer.SigninRequest;
+import org.kickmyb.transfer.SigninResponse;
+
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 public interface Service {
 
-    @GET("users/{utilisateur}/repos")
-    Call<String> listReposString(@Path("utilisateur") String utilisateur);
+    @GET("test")
+    Call<String> test();
+
+    @POST("/api/id/signin")
+    Call<SigninResponse> SignIN(@Body SigninRequest S);
 
     @GET("users/{utilisateur}/repos")
     Call<List<Repo>> listRepos(@Path("utilisateur") String utilisateur);
