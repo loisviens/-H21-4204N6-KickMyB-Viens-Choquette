@@ -3,8 +3,12 @@ package com.vienschoquette.h21_4204n6_kickmyb_viens_choquette.http;
 import com.vienschoquette.h21_4204n6_kickmyb_viens_choquette.transfer.Repo;
 import com.vienschoquette.h21_4204n6_kickmyb_viens_choquette.transfer.Utilisateur;
 
+import org.kickmyb.transfer.AddTaskRequest;
+import org.kickmyb.transfer.HomeItemResponse;
 import org.kickmyb.transfer.SigninRequest;
 import org.kickmyb.transfer.SigninResponse;
+import org.kickmyb.transfer.SignupRequest;
+import org.kickmyb.transfer.TaskDetailResponse;
 
 import java.util.List;
 
@@ -22,12 +26,21 @@ public interface Service {
     @POST("/api/id/signin")
     Call<SigninResponse> SignIN(@Body SigninRequest S);
 
-    @GET("users/{utilisateur}/repos")
-    Call<List<Repo>> listRepos(@Path("utilisateur") String utilisateur);
+    @POST("/api/id/signup")
+    Call<SigninResponse> SignUP(@Body SignupRequest S);
 
-    @GET("users/{utilisateur}")
-    Call<String> utilisateurString(@Path("utilisateur") String utilisateur);
+    @POST("/api/id/signout")
+    Call<String> SignOUT();                              // pas certain du Call<String>. il est pas censer retourner rien...
 
-    @GET("users/{utilisateur}")
-    Call<Utilisateur> utilisateur(@Path("utilisateur") String utilisateur);
+    @POST("/api/add")
+    Call<String> ListAdd(@Body AddTaskRequest T);       // pas certain du Call<String>. il est pas censer retourner rien...
+
+    @GET("/api/home")
+    Call<HomeItemResponse> ListGet();
+
+    @GET("/api/detail/{id}")
+    Call<TaskDetailResponse> DetailTache(@Path("id") int Id );
+
+    //@GET("/api/progress/{id}/{valeur}")
+    //Call<> TachePourcentageChange(@Path("id") int Id,@Path("valeur") int Valeur );  //un peut de dificultée a faire...
 }
