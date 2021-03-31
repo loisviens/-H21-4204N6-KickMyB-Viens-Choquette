@@ -82,7 +82,6 @@ public class AccueilActivity extends AppCompatActivity {
 //                i.putExtra("Nom", binding.loginName.getText().toString());
 //                i.putExtra("MDP", binding.loginPS.getText().toString());
                 startActivity(i);
-
             }
         });
 
