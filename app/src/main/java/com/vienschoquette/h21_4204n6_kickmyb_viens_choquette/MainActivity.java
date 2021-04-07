@@ -40,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
 //                i.putExtra("MDP", binding.loginPS.getText().toString());
 
                     SigninRequest user = new SigninRequest();
-                    user.username = binding.loginName.toString();
-                    user.password = binding.loginPS.toString();
+                    user.username = binding.loginName.getText().toString();
+                    user.password = binding.loginPS.getText().toString();
                     final Service service = RetrofitUtil.get();
                     service.SignIN(user).enqueue(new retrofit2.Callback<SigninResponse>() {
                         @Override
@@ -52,14 +52,14 @@ public class MainActivity extends AppCompatActivity {
                                 startActivity(i);
                             } else {
                                 //identifiant incorrect
-                                Toast.makeText(getApplicationContext(), "Mauvais identifiant ou mot de passe", Toast.LENGTH_LONG);
+                                Toast.makeText(getApplicationContext(), "Mauvais identifiant ou mot de passe", Toast.LENGTH_LONG).show();
                             }
                         }
 
                         @Override
                         public void onFailure(Call<SigninResponse> call, Throwable t) {
                             Log.i("Server", t.getMessage());
-                            Toast.makeText(getApplicationContext(), "Erreure", Toast.LENGTH_LONG);
+                            Toast.makeText(getApplicationContext(), "Erreure", Toast.LENGTH_LONG).show();
                         }
                     });
 

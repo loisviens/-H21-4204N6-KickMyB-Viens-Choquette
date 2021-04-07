@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.HeaderViewListAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -20,32 +21,48 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.navigation.NavigationView;
 import com.vienschoquette.h21_4204n6_kickmyb_viens_choquette.databinding.ActivityAcceuilBinding;
 import com.vienschoquette.h21_4204n6_kickmyb_viens_choquette.databinding.ActivityInscriptionBinding;
+import com.vienschoquette.h21_4204n6_kickmyb_viens_choquette.http.RetrofitUtil;
+import com.vienschoquette.h21_4204n6_kickmyb_viens_choquette.http.Service;
+
+import org.kickmyb.transfer.SigninResponse;
 
 import java.time.DateTimeException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class AccueilActivity extends AppCompatActivity {
     private ActivityAcceuilBinding binding;
     TachesAdapter adapter;
     ActionBarDrawerToggle actionbartoggle;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTitle("Acceuil");
+
+
 
         binding = ActivityAcceuilBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+        setTitle("Acceuil");
 
         this.initRecycler();
         this.remplirRecycler();
 
         //binding.toolbar.setDisplayHomeAsUpEnabled(true);
         setSupportActionBar(binding.toolbar);
+
+        TextView txt =binding.navView.getHeaderView(0). findViewById(R.id.textView);
+        txt.setText(getIntent().getExtras().getString("Nom"));
+
         final ActionBar actionBar = getSupportActionBar();
+
 
         if (actionBar != null)
         {
@@ -107,6 +124,12 @@ public class AccueilActivity extends AppCompatActivity {
 
 
     }
+   /*@Override
+    public void Deconnection() {
+        final Service service = RetrofitUtil.get();
+        service.SignOUT().enqueue(Callback<String>);
+        getPreference().removeLoginPreferences();
+    }*/
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (actionbartoggle.onOptionsItemSelected(item)){
