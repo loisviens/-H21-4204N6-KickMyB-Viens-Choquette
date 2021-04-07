@@ -3,8 +3,11 @@ package com.vienschoquette.h21_4204n6_kickmyb_viens_choquette;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.DatePicker;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,8 +19,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.navigation.NavigationView;
 import com.vienschoquette.h21_4204n6_kickmyb_viens_choquette.databinding.ActivityAjoutBinding;
+import com.vienschoquette.h21_4204n6_kickmyb_viens_choquette.http.RetrofitUtil;
+import com.vienschoquette.h21_4204n6_kickmyb_viens_choquette.http.Service;
+
+import org.kickmyb.transfer.AddTaskRequest;
+import org.kickmyb.transfer.SigninResponse;
 
 import java.util.Calendar;
+import java.util.Date;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class AjoutActivity extends AppCompatActivity {
     private ActivityAjoutBinding binding;
@@ -61,7 +74,31 @@ public class AjoutActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //envoie d'information pour ajouter la tache a la list view
-                finish();
+                AddTaskRequest addtask = new AddTaskRequest();
+
+                Date d = new Date(binding.ajoutDate.getYear() - 1900, binding.ajoutDate.getMonth(), binding.ajoutDate.getDayOfMonth());
+                addtask.deadLine = d;
+                addtask.name = binding.ajoutNom.getText().toString();
+                final Service service = RetrofitUtil.get();
+
+                service.ListAdd(addtask).enqueue(new Callback() {
+                    @Override
+                    public void onResponse(Call call, Response response) {
+                        if (response.isSuccessful()) {
+                            finish();
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Une erreure c'est produit au recu de la requete", Toast.LENGTH_LONG).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call call, Throwable t) {
+                        Log.i("Server", t.getMessage());
+                        Toast.makeText(getApplicationContext(), "Erreure. la requete na pas ete envoyer", Toast.LENGTH_LONG).show();
+                    }
+                });
+
+
             }
         });
         binding.AjoutBTNRetour.setOnClickListener(new View.OnClickListener() {
