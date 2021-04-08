@@ -9,13 +9,11 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.vienschoquette.h21_4204n6_kickmyb_viens_choquette.databinding.ActivityMainBinding;
-import com.vienschoquette.h21_4204n6_kickmyb_viens_choquette.http.RetrofitUtil;
+import com.vienschoquette.h21_4204n6_kickmyb_viens_choquette.http.RetrofitCookie;
 import com.vienschoquette.h21_4204n6_kickmyb_viens_choquette.http.Service;
 
 import org.kickmyb.transfer.SigninRequest;
 import org.kickmyb.transfer.SigninResponse;
-
-import javax.security.auth.callback.Callback;
 
 import retrofit2.Call;
 import retrofit2.Response;
@@ -42,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
                     SigninRequest user = new SigninRequest();
                     user.username = binding.loginName.getText().toString();
                     user.password = binding.loginPS.getText().toString();
-                    final Service service = RetrofitUtil.get();
+                    final Service service = RetrofitCookie.get();
                     service.SignIN(user).enqueue(new retrofit2.Callback<SigninResponse>() {
                         @Override
                         public void onResponse(Call<SigninResponse> call, Response<SigninResponse> response) {

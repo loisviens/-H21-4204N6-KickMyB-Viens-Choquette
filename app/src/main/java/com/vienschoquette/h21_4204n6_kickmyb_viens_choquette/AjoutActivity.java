@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.DatePicker;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -14,18 +13,14 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.navigation.NavigationView;
 import com.vienschoquette.h21_4204n6_kickmyb_viens_choquette.databinding.ActivityAjoutBinding;
-import com.vienschoquette.h21_4204n6_kickmyb_viens_choquette.http.RetrofitUtil;
+import com.vienschoquette.h21_4204n6_kickmyb_viens_choquette.http.RetrofitCookie;
 import com.vienschoquette.h21_4204n6_kickmyb_viens_choquette.http.Service;
 
 import org.kickmyb.transfer.AddTaskRequest;
-import org.kickmyb.transfer.SigninResponse;
 
-import java.util.Calendar;
 import java.util.Date;
 
 import retrofit2.Call;
@@ -79,7 +74,7 @@ public class AjoutActivity extends AppCompatActivity {
                 Date d = new Date(binding.ajoutDate.getYear() - 1900, binding.ajoutDate.getMonth(), binding.ajoutDate.getDayOfMonth());
                 addtask.deadLine = d;
                 addtask.name = binding.ajoutNom.getText().toString();
-                final Service service = RetrofitUtil.get();
+                final Service service = RetrofitCookie.get();
 
                 service.ListAdd(addtask).enqueue(new Callback() {
                     @Override

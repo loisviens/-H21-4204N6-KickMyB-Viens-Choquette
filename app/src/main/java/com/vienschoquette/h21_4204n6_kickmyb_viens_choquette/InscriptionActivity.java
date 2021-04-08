@@ -4,12 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import com.vienschoquette.h21_4204n6_kickmyb_viens_choquette.databinding.ActivityInscriptionBinding;
-import com.vienschoquette.h21_4204n6_kickmyb_viens_choquette.http.RetrofitUtil;
+import com.vienschoquette.h21_4204n6_kickmyb_viens_choquette.http.RetrofitCookie;
 import com.vienschoquette.h21_4204n6_kickmyb_viens_choquette.http.Service;
 
 import org.kickmyb.transfer.SigninRequest;
@@ -43,7 +42,7 @@ public class InscriptionActivity extends AppCompatActivity {
                 SignupRequest user = new SigninRequest();
                 user.username = binding.signupName.getText().toString();
                 user.password = binding.signupPS.getText().toString();
-                final Service service = RetrofitUtil.get();
+                final Service service = RetrofitCookie.get();
                 service.SignUP(user).enqueue(new Callback<SigninResponse>() {
                     @Override
                     public void onResponse(Call<SigninResponse> call, Response<SigninResponse> response) {

@@ -2,16 +2,16 @@ package com.vienschoquette.h21_4204n6_kickmyb_viens_choquette;
 
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.os.Build;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.HeaderViewListAdapter;
+import android.webkit.CookieManager;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,20 +20,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.navigation.NavigationView;
 import com.vienschoquette.h21_4204n6_kickmyb_viens_choquette.databinding.ActivityAcceuilBinding;
-import com.vienschoquette.h21_4204n6_kickmyb_viens_choquette.databinding.ActivityInscriptionBinding;
-import com.vienschoquette.h21_4204n6_kickmyb_viens_choquette.http.RetrofitUtil;
+import com.vienschoquette.h21_4204n6_kickmyb_viens_choquette.http.RetrofitCookie;
 import com.vienschoquette.h21_4204n6_kickmyb_viens_choquette.http.Service;
 
-import org.kickmyb.transfer.SigninResponse;
-
-import java.time.DateTimeException;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.Random;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class AccueilActivity extends AppCompatActivity {
     private ActivityAcceuilBinding binding;
@@ -124,12 +114,17 @@ public class AccueilActivity extends AppCompatActivity {
 
 
     }
-   /*@Override
+   /*@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+   @Override
     public void Deconnection() {
-        final Service service = RetrofitUtil.get();
+        final Service service = RetrofitCookie.get();
         service.SignOUT().enqueue(Callback<String>);
         getPreference().removeLoginPreferences();
+
+       CookieManager cm = CookieManager.getInstance();
+       cm.removeAllCookies();
     }*/
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (actionbartoggle.onOptionsItemSelected(item)){
@@ -150,16 +145,22 @@ public class AccueilActivity extends AppCompatActivity {
         super.onConfigurationChanged(newConfig);
     }
 
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        adapter.notifyDataSetChanged();
+    }
+
     private void remplirRecycler()
     {
-        for (int i = 0; i < 200; i++)
+        for (int i = 0; i < 10; i++)
         {
             Taches t = new Taches();
             t.nom = "Greg";
             t.avencementFait = 3;
             t.avencementTotaux = 10;
             t.dateCreation = Calendar.getInstance().getTime();
-            t.dateLimite =  Calendar.getInstance().getTime();
+            t.dateLimite = Calendar.getInstance().getTime();
             adapter.list.add(t);
         }
         adapter.notifyDataSetChanged();
