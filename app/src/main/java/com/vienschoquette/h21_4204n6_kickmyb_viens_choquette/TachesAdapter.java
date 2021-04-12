@@ -58,7 +58,7 @@ public class TachesAdapter extends RecyclerView.Adapter<TachesAdapter.MyViewHold
         Taches t = list.get(position);
 
         holder.TacheNom.setText("Activitée: " + t.nom);
-        holder.TacheAvencement.setText("Progrès: " + t.avencementFait.toString() );
+        holder.TacheAvencement.setText("Progrès: " + t.avencementFait.toString() + "%");
         holder.TacheDateLimite.setText("Date limite: " + t.dateLimite.toString());
         holder.TacheTempsEcouler.setText("Temps écouler: " + t.TimeSpent.toString() );
 
@@ -67,7 +67,7 @@ public class TachesAdapter extends RecyclerView.Adapter<TachesAdapter.MyViewHold
             public void onClick(View v) {
                 //Intent i = new Intent( holder.itemView.getContext(),InscriptionActivity.class);
                 Intent i = new Intent( v.getContext() ,ConsultationActivity.class);
-                i.putExtra("Position", position);
+                i.putExtra("ID", t.id);
                 v.getContext().startActivity(i);
             }
         });

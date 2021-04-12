@@ -71,14 +71,14 @@ public class ConsultationActivity extends AppCompatActivity {
         }
 
         final Service service = RetrofitCookie.get();
-        service.DetailTache(getIntent().getExtras().getInt("Position")).enqueue(new Callback<TaskDetailResponse>() {
+        service.DetailTache(getIntent().getExtras().getLong("ID")).enqueue(new Callback<TaskDetailResponse>() {
             @Override
             public void onResponse(Call<TaskDetailResponse> call, Response<TaskDetailResponse> response) {
                 try {
-                    binding.consultationDate.setText            ("Échéance:"+ response.body().deadLine.toString());
+                    binding.consultationDate.setText            ("Échéance:\n"+ response.body().deadLine.toString());
                     //binding. .setText( response.body().events;
-                    binding.consultationNom.setText             ("Nom d'activité:"+response.body().name);
-                    binding.consultationTempsEcouler.setText    ("TempsEcouler:"+ response.body().percentageTimeSpent);
+                    binding.consultationNom.setText             ("Nom d'activité:\n"+ response.body().name);
+                    binding.consultationTempsEcouler.setText    ("TempsEcouler:\n"+ response.body().percentageTimeSpent);
                     binding.consultationProgressBar.setProgress(response.body().percentageDone);
 
                 } catch (Exception e)
@@ -102,11 +102,8 @@ public class ConsultationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
-
-
                 final Service service = RetrofitCookie.get();
-                service.TachePourcentageChange(getIntent().getExtras().getInt("Position"),Integer.parseInt(binding.consultationTextProgressChange.getText().toString())).enqueue(new Callback<String>() {
+                service.TachePourcentageChange(getIntent().getExtras().getLong("ID"),Integer.parseInt(binding.consultationTextProgressChange.getText().toString())).enqueue(new Callback<String>() {
                     @Override
                     public void onResponse(Call<String> call, Response<String> response) {
                         binding.consultationProgressBar.setProgress(
@@ -136,8 +133,6 @@ public class ConsultationActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if (item.getItemId() == R.id.nav_accueil) {
                     finish();
-                    Intent i = new Intent(ConsultationActivity.this, AccueilActivity.class);
-                    startActivity(i);
                 }
                 else if (item.getItemId() == R.id.nav_ajout)
                 {

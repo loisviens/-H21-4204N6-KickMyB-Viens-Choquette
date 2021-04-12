@@ -8,5 +8,6 @@ public class Taches {
     public Integer avencementFait;
     public Integer TimeSpent;
     public Date dateLimite;
+    public Long id;
 
 }

@@ -30,17 +30,17 @@ public interface Service {
     Call<SigninResponse> SignUP(@Body SignupRequest S);
 
     @POST("/api/id/signout")
-    Call<String> SignOUT();                              // pas certain du Call<String>. il est pas censer retourner rien...
+    Call<Void> SignOUT();                              // pas certain du Call<String>. il est pas censer retourner rien...
 
     @POST("/api/add")
-    Call<String> ListAdd(@Body AddTaskRequest T);       // pas certain du Call<String>. il est pas censer retourner rien...
+    Call<Void> ListAdd(@Body AddTaskRequest T);       // pas certain du Call<String>. il est pas censer retourner rien...
 
     @GET("/api/home")
-    Call<HomeItemResponse> ListGet();
+    Call<List<HomeItemResponse>> ListGet();
 
     @GET("/api/detail/{id}")
-    Call<TaskDetailResponse> DetailTache(@Path("id") int Id );
+    Call<TaskDetailResponse> DetailTache(@Path("id") Long Id );
 
     @GET("/api/progress/{id}/{valeur}")
-    Call<String> TachePourcentageChange(@Path("id") int Id,@Path("valeur") int Valeur );  //un peut de dificultée a faire...
+    Call<String> TachePourcentageChange(@Path("id") Long Id,@Path("valeur") int Valeur );  //un peut de dificultée a faire...
 }

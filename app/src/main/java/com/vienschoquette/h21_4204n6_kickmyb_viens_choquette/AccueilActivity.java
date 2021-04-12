@@ -27,6 +27,7 @@ import com.vienschoquette.h21_4204n6_kickmyb_viens_choquette.http.Service;
 import org.kickmyb.transfer.HomeItemResponse;
 import org.kickmyb.transfer.SigninResponse;
 
+import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -53,7 +54,7 @@ public class AccueilActivity extends AppCompatActivity {
         setTitle("Acceuil");
 
         this.initRecycler();
-        this.remplirRecycler();
+        this.MAJListView();
 
         //binding.toolbar.setDisplayHomeAsUpEnabled(true);
         setSupportActionBar(binding.toolbar);
@@ -164,52 +165,34 @@ public class AccueilActivity extends AppCompatActivity {
     private void MAJListView()
     {
         final Service service = RetrofitCookie.get();
-        service.ListGet().enqueue(new Callback<HomeItemResponse>() {
+        service.ListGet().enqueue(new Callback<List<HomeItemResponse>>() {
             @Override
-            public void onResponse(Call<HomeItemResponse> call, Response<HomeItemResponse> response) {
-
-                /*ArrayList<HomeItemResponse> liste = new ArrayList<>();
-                liste = response.body();*/
-                Taches t = new Taches();
-                t.nom = response.body().name;
-                t.avencementFait = response.body().percentageDone;
-                t.TimeSpent = response.body().percentageTimeSpent;
-                t.dateLimite = response.body().deadline;
-                adapter.list.add(t);
-
-                /*for (int i ; i < response. ; i++)
+            public void onResponse(Call<List<HomeItemResponse>> call, Response<List<HomeItemResponse>> response)
+            {
+                adapter.list.clear();
+                List<HomeItemResponse> liste = new ArrayList<>();
+                liste = response.body();
+                if( 0 < liste.size())
                 {
-                    
+                    for (HomeItemResponse item : liste) {
+                        Taches t = new Taches();
+                        t.nom = item.name;
+                        t.avencementFait = item.percentageDone;
+                        t.TimeSpent = item.percentageTimeSpent;
+                        t.dateLimite = item.deadline;
+                        t.id = item.id;
+                        adapter.list.add(t);
+                    }
+                    adapter.notifyDataSetChanged();
                 }
-                for (List<HomeItemResponse> item: response)
-                {
-                    
-                }*/
             }
 
             @Override
-            public void onFailure(Call<HomeItemResponse> call, Throwable t) {
+            public void onFailure(Call<List<HomeItemResponse>> call, Throwable t) {
                 Toast.makeText(getApplicationContext(), "erreure a l'appel de la liste", Toast.LENGTH_LONG).show();
             }
-        });
 
-
-//je fait mon call home
-        adapter.notifyDataSetChanged();
-    }
-
-    private void remplirRecycler()
-    {
-        for (int i = 0; i < 10; i++)
-        {
-            Taches t = new Taches();
-            t.nom = getIntent().getExtras().getString("Nom");
-            t.avencementFait = 3;
-            t.TimeSpent = 10;
-            t.dateLimite = Calendar.getInstance().getTime();
-            adapter.list.add(t);
-        }
-        adapter.notifyDataSetChanged();
+            });
 
     }
 
