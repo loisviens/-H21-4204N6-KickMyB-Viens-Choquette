@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.webkit.CookieManager;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,7 +24,16 @@ import com.vienschoquette.h21_4204n6_kickmyb_viens_choquette.databinding.Activit
 import com.vienschoquette.h21_4204n6_kickmyb_viens_choquette.http.RetrofitCookie;
 import com.vienschoquette.h21_4204n6_kickmyb_viens_choquette.http.Service;
 
+import org.kickmyb.transfer.HomeItemResponse;
+import org.kickmyb.transfer.SigninResponse;
+
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class AccueilActivity extends AppCompatActivity {
     private ActivityAcceuilBinding binding;
@@ -148,6 +158,43 @@ public class AccueilActivity extends AppCompatActivity {
     @Override
     protected void onPostResume() {
         super.onPostResume();
+        MAJListView();
+    }
+
+    private void MAJListView()
+    {
+        final Service service = RetrofitCookie.get();
+        service.ListGet().enqueue(new Callback<HomeItemResponse>() {
+            @Override
+            public void onResponse(Call<HomeItemResponse> call, Response<HomeItemResponse> response) {
+
+                /*ArrayList<HomeItemResponse> liste = new ArrayList<>();
+                liste = response.body();*/
+                Taches t = new Taches();
+                t.nom = response.body().name;
+                t.avencementFait = response.body().percentageDone;
+                t.TimeSpent = response.body().percentageTimeSpent;
+                t.dateLimite = response.body().deadline;
+                adapter.list.add(t);
+
+                /*for (int i ; i < response. ; i++)
+                {
+                    
+                }
+                for (List<HomeItemResponse> item: response)
+                {
+                    
+                }*/
+            }
+
+            @Override
+            public void onFailure(Call<HomeItemResponse> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "erreure a l'appel de la liste", Toast.LENGTH_LONG).show();
+            }
+        });
+
+
+//je fait mon call home
         adapter.notifyDataSetChanged();
     }
 
@@ -156,10 +203,9 @@ public class AccueilActivity extends AppCompatActivity {
         for (int i = 0; i < 10; i++)
         {
             Taches t = new Taches();
-            t.nom = "Greg";
+            t.nom = getIntent().getExtras().getString("Nom");
             t.avencementFait = 3;
-            t.avencementTotaux = 10;
-            t.dateCreation = Calendar.getInstance().getTime();
+            t.TimeSpent = 10;
             t.dateLimite = Calendar.getInstance().getTime();
             adapter.list.add(t);
         }

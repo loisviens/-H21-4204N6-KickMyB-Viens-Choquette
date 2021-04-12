@@ -41,6 +41,6 @@ public interface Service {
     @GET("/api/detail/{id}")
     Call<TaskDetailResponse> DetailTache(@Path("id") int Id );
 
-    //@GET("/api/progress/{id}/{valeur}")
-    //Call<> TachePourcentageChange(@Path("id") int Id,@Path("valeur") int Valeur );  //un peut de dificultée a faire...
+    @GET("/api/progress/{id}/{valeur}")
+    Call<String> TachePourcentageChange(@Path("id") int Id,@Path("valeur") int Valeur );  //un peut de dificultée a faire...
 }

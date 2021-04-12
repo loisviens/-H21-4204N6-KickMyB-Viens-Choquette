@@ -37,8 +37,6 @@ public class InscriptionActivity extends AppCompatActivity {
             public void onClick(View v) {
                 finish();
                 Intent i = new Intent(InscriptionActivity.this, AccueilActivity.class);
-//                i.putExtra("Nom", binding.loginName.getText().toString());
-//                i.putExtra("MDP", binding.loginPS.getText().toString());
                 SignupRequest user = new SigninRequest();
                 user.username = binding.signupName.getText().toString();
                 user.password = binding.signupPS.getText().toString();

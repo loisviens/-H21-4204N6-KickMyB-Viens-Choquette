@@ -34,8 +34,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this, AccueilActivity.class);
-//                i.putExtra("Nom", binding.loginName.getText().toString());
-//                i.putExtra("MDP", binding.loginPS.getText().toString());
 
                     SigninRequest user = new SigninRequest();
                     user.username = binding.loginName.getText().toString();

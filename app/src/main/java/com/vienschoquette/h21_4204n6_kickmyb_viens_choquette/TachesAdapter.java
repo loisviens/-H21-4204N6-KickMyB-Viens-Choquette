@@ -58,9 +58,9 @@ public class TachesAdapter extends RecyclerView.Adapter<TachesAdapter.MyViewHold
         Taches t = list.get(position);
 
         holder.TacheNom.setText("Activitée: " + t.nom);
-        holder.TacheAvencement.setText("Progrès: " + t.avencementFait.toString() + "/" + t.avencementTotaux.toString());
+        holder.TacheAvencement.setText("Progrès: " + t.avencementFait.toString() );
         holder.TacheDateLimite.setText("Date limite: " + t.dateLimite.toString());
-        holder.TacheTempsEcouler.setText("Temps écouler: " + Long.toString(t.dateCreation.getTime() - t.dateLimite.getTime()) );
+        holder.TacheTempsEcouler.setText("Temps écouler: " + t.TimeSpent.toString() );
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -6,8 +6,7 @@ public class Taches {
 
     public String nom;
     public Integer avencementFait;
-    public Integer avencementTotaux;
-    public Date dateCreation;
+    public Integer TimeSpent;
     public Date dateLimite;
 
 }
