@@ -78,7 +78,7 @@ public class ConsultationActivity extends AppCompatActivity {
                     binding.consultationDate.setText            ("Échéance:\n"+ response.body().deadLine.toString());
                     //binding. .setText( response.body().events;
                     binding.consultationNom.setText             ("Nom d'activité:\n"+ response.body().name);
-                    binding.consultationTempsEcouler.setText    ("TempsEcouler:\n"+ response.body().percentageTimeSpent);
+                    binding.consultationTempsEcouler.setText    ("Temps écouler:\n"+ response.body().percentageTimeSpent);
                     binding.consultationProgressBar.setProgress(response.body().percentageDone);
 
                 } catch (Exception e)
@@ -145,6 +145,19 @@ public class ConsultationActivity extends AppCompatActivity {
                     finish();
                     Intent i = new Intent(ConsultationActivity.this, MainActivity.class);
                     startActivity(i);
+                    //enleve le cookie de la session
+                    final Service service = RetrofitCookie.get();
+                    service.SignOUT().enqueue(new Callback<Void>() {
+                        @Override
+                        public void onResponse(Call<Void> call, Response<Void> response) {
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<Void> call, Throwable t) {
+                            Toast.makeText(getApplicationContext(), "erreure a la reponce de déconnection", Toast.LENGTH_LONG).show();
+                        }
+                    });
                 }
                 binding.drawerLayout.closeDrawers();
                 return false;

@@ -50,7 +50,7 @@
                     android:padding="10dp"
                     android:layout_margin="10dp"
                     android:gravity="left"
-                    android:text="Nom d'activité: \n Greg"
+                    android:text="Nom d'activité: \n null"
                     android:textSize="20sp"
                     android:maxWidth="150dp"/>/>
                 <TextView
@@ -60,7 +60,7 @@
                     android:padding="10dp"
                     android:layout_margin="10dp"
                     android:gravity="center"
-                    android:text="Échéance:\n 2021-03-25"
+                    android:text="Échéance: null"
                     android:textSize="20sp"
                     android:maxWidth="150dp"/>
                 <TextView
@@ -70,7 +70,7 @@
                     android:padding="10dp"
                     android:layout_margin="10dp"
                     android:gravity="left"
-                    android:text="TempsEcouler: \n 1 Jour \n 5 Heurs \n 13 minutes"
+                    android:text="TempsEcouler:null"
                     android:textSize="20sp"
                     android:maxWidth="150dp"/>/>
 

@@ -17,7 +17,7 @@ public class RetrofitCookie {
                     .addConverterFactory(ScalarsConverterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create())
                     .client(client())
-                    .baseUrl("http://10.0.2.2:8080/")
+                    .baseUrl("https://warm-forest-18470.herokuapp.com/")
                     .build();
 
             instance = retrofit.create(Service.class);

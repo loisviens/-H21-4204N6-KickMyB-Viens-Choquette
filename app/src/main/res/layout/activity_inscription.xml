@@ -29,7 +29,8 @@
         android:layout_margin="10dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="bob"
+        android:text=""
+        android:hint="Nom d'utilisateur"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -39,8 +40,9 @@
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:layout_margin="10dp"
-        android:text="bob"
+        android:text=""
         android:ems="10"
+        android:hint="Mot de passe"
         android:inputType="textPassword"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -51,8 +53,9 @@
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:layout_margin="10dp"
-        android:text="bob"
+        android:text=""
         android:ems="10"
+        android:hint="Mot de passe"
         android:inputType="textPassword"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

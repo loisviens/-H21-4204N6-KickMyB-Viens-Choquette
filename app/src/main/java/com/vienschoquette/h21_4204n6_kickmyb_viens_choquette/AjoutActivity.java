@@ -117,6 +117,19 @@ public class AjoutActivity extends AppCompatActivity {
                     finish();
                     Intent i = new Intent(AjoutActivity.this, MainActivity.class);
                     startActivity(i);
+                    //enleve le cookie de la session
+                    final Service service = RetrofitCookie.get();
+                    service.SignOUT().enqueue(new Callback<Void>() {
+                        @Override
+                        public void onResponse(Call<Void> call, Response<Void> response) {
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<Void> call, Throwable t) {
+                            Toast.makeText(getApplicationContext(), "erreure a la reponce de déconnection", Toast.LENGTH_LONG).show();
+                        }
+                    });
                 }
                 binding.drawerLayout.closeDrawers();
                 return false;

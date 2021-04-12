@@ -23,6 +23,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.vienschoquette.h21_4204n6_kickmyb_viens_choquette.databinding.ActivityAcceuilBinding;
 import com.vienschoquette.h21_4204n6_kickmyb_viens_choquette.http.RetrofitCookie;
 import com.vienschoquette.h21_4204n6_kickmyb_viens_choquette.http.Service;
+import com.vienschoquette.h21_4204n6_kickmyb_viens_choquette.http.SessionCookieJar;
 
 import org.kickmyb.transfer.HomeItemResponse;
 import org.kickmyb.transfer.SigninResponse;
@@ -32,6 +33,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import okhttp3.OkHttp;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -116,6 +118,19 @@ public class AccueilActivity extends AppCompatActivity {
                 }
                 else if (item.getItemId() == R.id.nav_deconnection)
                 {
+                    //enleve le cookie de la session
+                    final Service service = RetrofitCookie.get();
+                    service.SignOUT().enqueue(new Callback<Void>() {
+                        @Override
+                        public void onResponse(Call<Void> call, Response<Void> response) {
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<Void> call, Throwable t) {
+                            Toast.makeText(getApplicationContext(), "erreure a la reponce de déconnection", Toast.LENGTH_LONG).show();
+                        }
+                    });
                     finish();
                 }
                  binding.drawerLayout.closeDrawers();
