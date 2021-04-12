@@ -3,8 +3,10 @@ package com.vienschoquette.h21_4204n6_kickmyb_viens_choquette;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,8 +20,16 @@ import com.github.mikephil.charting.charts.PieChart;
 import com.google.android.material.navigation.NavigationView;
 import com.vienschoquette.h21_4204n6_kickmyb_viens_choquette.databinding.ActivityAcceuilBinding;
 import com.vienschoquette.h21_4204n6_kickmyb_viens_choquette.databinding.ActivityConsultationBinding;
+import com.vienschoquette.h21_4204n6_kickmyb_viens_choquette.http.RetrofitCookie;
+import com.vienschoquette.h21_4204n6_kickmyb_viens_choquette.http.Service;
+
+import org.kickmyb.transfer.TaskDetailResponse;
 
 import java.util.Calendar;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ConsultationActivity extends AppCompatActivity {
     private ActivityConsultationBinding binding;
@@ -60,13 +70,58 @@ public class ConsultationActivity extends AppCompatActivity {
 
         }
 
-        binding.consultationProgressBar.setProgress(75);
+        final Service service = RetrofitCookie.get();
+        service.DetailTache(getIntent().getExtras().getInt("Position")).enqueue(new Callback<TaskDetailResponse>() {
+            @Override
+            public void onResponse(Call<TaskDetailResponse> call, Response<TaskDetailResponse> response) {
+                try {
+                    binding.consultationDate.setText            ("Échéance:"+ response.body().deadLine.toString());
+                    //binding. .setText( response.body().events;
+                    binding.consultationNom.setText             ("Nom d'activité:"+response.body().name);
+                    binding.consultationTempsEcouler.setText    ("TempsEcouler:"+ response.body().percentageTimeSpent);
+                    binding.consultationProgressBar.setProgress(response.body().percentageDone);
+
+                } catch (Exception e)
+                {
+                    Toast.makeText(getApplicationContext(), "Une ou plusieur information recu sont nulles", Toast.LENGTH_LONG).show();
+                    Log.e("kickmyb", "onResponse: " + e );
+                }
+
+
+
+            }
+
+            @Override
+            public void onFailure(Call<TaskDetailResponse> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "Mauvais ID ou autre erreure", Toast.LENGTH_LONG).show();
+            }
+        });
+
 
         binding.consultationBTNProgressChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                binding.consultationProgressBar.setProgress(
-                        Integer.parseInt(binding.consultationTextProgressChange.getText().toString()));
+
+
+
+
+                final Service service = RetrofitCookie.get();
+                service.TachePourcentageChange(getIntent().getExtras().getInt("Position"),Integer.parseInt(binding.consultationTextProgressChange.getText().toString())).enqueue(new Callback<String>() {
+                    @Override
+                    public void onResponse(Call<String> call, Response<String> response) {
+                        binding.consultationProgressBar.setProgress(
+                                Integer.parseInt(binding.consultationTextProgressChange.getText().toString()));
+                    }
+
+                    @Override
+                    public void onFailure(Call<String> call, Throwable t) {
+                        Toast.makeText(getApplicationContext(), "Erreure au changement de progre", Toast.LENGTH_LONG).show();
+                        Log.e("kickmyb", "onFailure: "+t );
+                    }
+                });
+
+
+
             }
         });
 

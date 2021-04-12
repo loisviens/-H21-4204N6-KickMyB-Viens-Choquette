@@ -36,7 +36,7 @@
         android:padding="10dp"
         android:layout_margin="20dp"
         android:gravity="center"
-        android:text="Bienvenue a la page d'accueil \n Vous pouvez tout voir a partir d'ici"
+        android:text="Bienvenue à la page d'accueil. \n Vous pouvez tout voir à partir d'ici."
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
