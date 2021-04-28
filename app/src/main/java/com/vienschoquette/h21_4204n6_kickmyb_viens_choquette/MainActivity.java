@@ -48,14 +48,14 @@ public class MainActivity extends AppCompatActivity {
                                 startActivity(i);
                             } else {
                                 //identifiant incorrect
-                                Toast.makeText(getApplicationContext(), "Mauvais identifiant ou mot de passe", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), R.string.con_error_wrong_id, Toast.LENGTH_LONG).show();
                             }
                         }
 
                         @Override
                         public void onFailure(Call<SigninResponse> call, Throwable t) {
                             Log.i("Server", t.getMessage());
-                            Toast.makeText(getApplicationContext(), "Erreure", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), R.string.con_error_connection, Toast.LENGTH_LONG).show();
                         }
                     });
 

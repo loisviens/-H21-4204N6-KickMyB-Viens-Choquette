@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:gravity="center"
-            android:text="Page d'ajout.\nVous pouvez créer une tache ici."
+            android:text="@string/aj_text"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -49,9 +49,10 @@
             android:layout_margin="10dp"
             android:ems="15"
             android:inputType="textPersonName"
-            android:text="Nom de la tache"
+            android:hint="@string/aj_task_name"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
         <DatePicker
             android:id="@+id/ajoutDate"
             android:layout_width="wrap_content"
@@ -73,7 +74,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
-                android:text="Retour"
+                android:text="@string/signup_back"
                 android:textColor="@color/black"
                 android:backgroundTint="#b1e2e3"
                 app:layout_constraintStart_toStartOf="parent"
@@ -86,7 +87,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
-                android:text="Ajout"
+                android:text="@string/acc_add"
                 android:textColor="@color/black"
                 android:backgroundTint="#b1e2e3"
                 app:layout_constraintStart_toStartOf="parent"

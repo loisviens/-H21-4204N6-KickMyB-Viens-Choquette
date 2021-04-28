@@ -38,7 +38,7 @@ public class ConsultationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTitle("Consultation");
+        setTitle(R.string.task_title);
 
         //setTitle(getIntent().getStringExtra("Position"));
 
@@ -75,15 +75,15 @@ public class ConsultationActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<TaskDetailResponse> call, Response<TaskDetailResponse> response) {
                 try {
-                    binding.consultationDate.setText            ("Échéance:\n"+ response.body().deadLine.toString());
+                    binding.consultationDate.setText            (R.string.task_limit + "\n" + response.body().deadLine.toString());
                     //binding. .setText( response.body().events;
-                    binding.consultationNom.setText             ("Nom d'activité:\n"+ response.body().name);
-                    binding.consultationTempsEcouler.setText    ("Temps écouler:\n"+ response.body().percentageTimeSpent);
+                    binding.consultationNom.setText             (R.string.task_name + "\n" + response.body().name);
+                    binding.consultationTempsEcouler.setText    (R.string.task_time + "\n" + response.body().percentageTimeSpent);
                     binding.consultationProgressBar.setProgress(response.body().percentageDone);
 
                 } catch (Exception e)
                 {
-                    Toast.makeText(getApplicationContext(), "Une ou plusieur information recu sont nulles", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), R.string.task_error_null_info, Toast.LENGTH_LONG).show();
                     Log.e("kickmyb", "onResponse: " + e );
                 }
 
@@ -93,7 +93,7 @@ public class ConsultationActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<TaskDetailResponse> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), "Mauvais ID ou autre erreure", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), R.string.con_error_connection, Toast.LENGTH_LONG).show();
             }
         });
 
@@ -112,7 +112,7 @@ public class ConsultationActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<String> call, Throwable t) {
-                        Toast.makeText(getApplicationContext(), "Erreure au changement de progre", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), R.string.task_error_progress_change, Toast.LENGTH_LONG).show();
                         Log.e("kickmyb", "onFailure: "+t );
                     }
                 });

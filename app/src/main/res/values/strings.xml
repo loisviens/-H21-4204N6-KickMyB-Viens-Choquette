@@ -2,4 +2,46 @@
     <string name="app_name">H21-4204N6-KickMyB-Viens-Choquette</string>
     <string name="drawerOpen">Close</string>
     <string name="drawerClose">Open</string>
+
+    <!--connection-->
+    <string name="con_text">Enter your information below to connect</string>
+    <string name="con_connection_button">LOGIN</string>
+
+    <!--signup-->
+    <string name="signup_text">Enter your information below to register</string>
+    <string name="signup_back">BACK</string>
+
+    <!--sign up & connection-->
+    <string name="con_user_hint">Username</string>
+    <string name="con_password_hint">Password</string>
+    <string name="con_signup_button">SIGN UP</string>
+
+    <!--sign up & connection errors-->
+    <string name="con_error_wrong_id">Wrong username or password</string>
+    <string name="con_error_invalid_signup">Username already taken or invalid password</string>
+    <string name="con_error_connection">Can\'t connect to server. Check internet connection</string>
+
+    <!--Acceuil-->
+    <string name="acc_title">Home</string>
+    <string name="acc_text">Welcome to the home page.\nYou can see everything from here.</string>
+    <string name="acc_logout">LOGOUT</string>
+    <string name="acc_add">ADD</string>
+
+    <!--Ajout-->
+    <string name="aj_title">Add</string>
+    <string name="aj_text">Add page.\\nHere, you can add a task.</string>
+    <string name="aj_task_name">Name of the task</string>
+
+    <!--Tache preview-->
+    <string name="task_name">Activity:</string>
+    <string name="task_limit">Issue Date:</string>
+    <string name="task_progress">Progress:</string>
+    <string name="task_time">Time passed:</string>
+
+    <!--Tache consultation-->
+    <string name="task_title">Consultation</string>
+    <string name="task_new_progress">New percentage</string>
+    <string name="task_change_button">CHANGE THE PERCENTAGE</string>
+    <string name="task_error_null_info">One or many information recived are null</string>
+    <string name="task_error_progress_change">An error has occurred when changing the progress</string>
 </resources>

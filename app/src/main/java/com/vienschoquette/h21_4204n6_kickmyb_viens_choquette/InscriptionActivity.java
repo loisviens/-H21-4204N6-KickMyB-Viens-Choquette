@@ -50,14 +50,14 @@ public class InscriptionActivity extends AppCompatActivity {
                             startActivity(i);
                         } else {
                             //identifiant incorrect
-                            Toast.makeText(getApplicationContext(), "Identifiant deja utiliser ou mot de passe invalide", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), R.string.con_error_invalid_signup , Toast.LENGTH_LONG).show();
                         }
 
                     }
 
                     @Override
                     public void onFailure(Call<SigninResponse> call, Throwable t) {
-                        Toast.makeText(getApplicationContext(), "erreure", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), R.string.con_error_connection, Toast.LENGTH_LONG).show();
                     }
                 });
 

@@ -16,7 +16,7 @@
         android:padding="10dp"
         android:layout_margin="20dp"
         android:gravity="center"
-        android:text="Veuillez remplir les informations \n ci-dessous pour vous inscrire."
+        android:text="@string/signup_text"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -30,7 +30,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text=""
-        android:hint="Nom d'utilisateur"
+        android:hint="@string/con_user_hint"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -42,7 +42,7 @@
         android:layout_margin="10dp"
         android:text=""
         android:ems="10"
-        android:hint="Mot de passe"
+        android:hint="@string/con_password_hint"
         android:inputType="textPassword"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -55,7 +55,7 @@
         android:layout_margin="10dp"
         android:text=""
         android:ems="10"
-        android:hint="Mot de passe"
+        android:hint="@string/con_password_hint"
         android:inputType="textPassword"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -65,7 +65,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="s'inscrire"
+        android:text="@string/con_signup_button"
         android:textColor="@color/black"
         android:backgroundTint="#b1e2e3"
         app:layout_constraintStart_toStartOf="parent"
@@ -76,7 +76,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="Retour"
+        android:text="@string/signup_back"
         android:textColor="@color/black"
         android:backgroundTint="#b1e2e3"
         app:layout_constraintStart_toStartOf="parent"

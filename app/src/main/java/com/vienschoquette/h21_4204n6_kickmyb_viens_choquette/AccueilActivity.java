@@ -53,7 +53,7 @@ public class AccueilActivity extends AppCompatActivity {
         binding = ActivityAcceuilBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
-        setTitle("Acceuil");
+        setTitle(R.string.acc_title);
 
         this.initRecycler();
         this.MAJListView();
