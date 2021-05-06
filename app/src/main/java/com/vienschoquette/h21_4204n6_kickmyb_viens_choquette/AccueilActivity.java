@@ -128,7 +128,7 @@ public class AccueilActivity extends AppCompatActivity {
 
                         @Override
                         public void onFailure(Call<Void> call, Throwable t) {
-                            Toast.makeText(getApplicationContext(), "erreure a la reponce de déconnection", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), R.string.toast_Err_logoff_request, Toast.LENGTH_LONG).show();
                         }
                     });
                     finish();
@@ -204,7 +204,7 @@ public class AccueilActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<HomeItemResponse>> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), "erreure a l'appel de la liste", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), R.string.toast_Err_list_refresh, Toast.LENGTH_LONG).show();
             }
 
             });

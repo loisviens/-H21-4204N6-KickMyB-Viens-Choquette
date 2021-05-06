@@ -4,14 +4,14 @@
         <item
             android:id="@+id/nav_accueil"
             android:icon="@drawable/ic_launcher_background"
-            android:title="Acceuil" />
+            android:title="@string/acc_title" />
         <item
             android:id="@+id/nav_ajout"
             android:icon="@drawable/ic_launcher_background"
-            android:title="Ajout" />
+            android:title="@string/aj_title" />
         <item
             android:id="@+id/nav_deconnection"
             android:icon="@drawable/ic_launcher_background"
-            android:title="Deconnection" />
+            android:title="@string/acc_logout" />
     </group>
 </menu>

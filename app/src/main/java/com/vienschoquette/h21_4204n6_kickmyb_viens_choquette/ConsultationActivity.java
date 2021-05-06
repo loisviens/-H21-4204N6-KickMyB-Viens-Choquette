@@ -75,10 +75,10 @@ public class ConsultationActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<TaskDetailResponse> call, Response<TaskDetailResponse> response) {
                 try {
-                    binding.consultationDate.setText            (R.string.task_limit + "\n" + response.body().deadLine.toString());
+                    binding.consultationDate.setText            (getText(R.string.task_limit) + "\n" + response.body().deadLine.toString());
                     //binding. .setText( response.body().events;
-                    binding.consultationNom.setText             (R.string.task_name + "\n" + response.body().name);
-                    binding.consultationTempsEcouler.setText    (R.string.task_time + "\n" + response.body().percentageTimeSpent);
+                    binding.consultationNom.setText             (getText(R.string.task_name) + "\n" + response.body().name);
+                    binding.consultationTempsEcouler.setText    (getText(R.string.task_time) + "\n" + response.body().percentageTimeSpent);
                     binding.consultationProgressBar.setProgress(response.body().percentageDone);
 
                 } catch (Exception e)
@@ -155,7 +155,7 @@ public class ConsultationActivity extends AppCompatActivity {
 
                         @Override
                         public void onFailure(Call<Void> call, Throwable t) {
-                            Toast.makeText(getApplicationContext(), "erreure a la reponce de déconnection", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), R.string.toast_Err_logoff_request, Toast.LENGTH_LONG).show();
                         }
                     });
                 }
