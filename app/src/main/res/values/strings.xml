@@ -29,7 +29,7 @@
 
     <!--Ajout-->
     <string name="aj_title">Add</string>
-    <string name="aj_text">Add page.\\nHere, you can add a task.</string>
+    <string name="aj_text">Add page. Here, you can add a task.</string>
     <string name="aj_task_name">Name of the task</string>
 
     <!--Tache preview-->
@@ -44,4 +44,12 @@
     <string name="task_change_button">CHANGE THE PERCENTAGE</string>
     <string name="task_error_null_info">One or many information recived are null</string>
     <string name="task_error_progress_change">An error has occurred when changing the progress</string>
+
+    <!--Erreure Toast-->
+    <string name="toast_Err_logoff_request">An error occurred while disconnecting</string>
+    <string name="toast_Err_general">An error has occurend with the request</string>
+    <string name="toast_Err_list_refresh">An error has occurend when refreshing the list</string>
+
+    <!--Place holders-->
+    <string name="placeholder_name">Name</string>
 </resources>

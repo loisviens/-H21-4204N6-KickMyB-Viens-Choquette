@@ -82,14 +82,14 @@ public class AjoutActivity extends AppCompatActivity {
                         if (response.isSuccessful()) {
                             finish();
                         } else {
-                            Toast.makeText(getApplicationContext(), "Une erreure c'est produit au recu de la requete", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), R.string.toast_Err_general, Toast.LENGTH_LONG).show();
                         }
                     }
 
                     @Override
                     public void onFailure(Call call, Throwable t) {
                         Log.i("Server", t.getMessage());
-                        Toast.makeText(getApplicationContext(), "Erreure. la requete na pas ete envoyer", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), R.string.toast_Err_general, Toast.LENGTH_LONG).show();
                     }
                 });
 
@@ -127,7 +127,7 @@ public class AjoutActivity extends AppCompatActivity {
 
                         @Override
                         public void onFailure(Call<Void> call, Throwable t) {
-                            Toast.makeText(getApplicationContext(), "erreure a la reponce de déconnection", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), R.string.toast_Err_logoff_request, Toast.LENGTH_LONG).show();
                         }
                     });
                 }
