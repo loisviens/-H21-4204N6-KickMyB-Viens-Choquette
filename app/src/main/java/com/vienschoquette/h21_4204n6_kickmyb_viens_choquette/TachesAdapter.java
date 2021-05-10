@@ -1,5 +1,6 @@
 package com.vienschoquette.h21_4204n6_kickmyb_viens_choquette;
 
+import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,6 +20,7 @@ import java.util.List;
 
 public class TachesAdapter extends RecyclerView.Adapter<TachesAdapter.MyViewHolder> {
     public List<Taches> list;
+    Context context;
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
@@ -36,9 +38,10 @@ public class TachesAdapter extends RecyclerView.Adapter<TachesAdapter.MyViewHold
     }
 
 
-    public TachesAdapter()
+    public TachesAdapter(Context c)
     {
         list = new ArrayList<>();
+        this.context = c;
     }
 
     // Create new views (invoked by the layout manager)
@@ -57,10 +60,10 @@ public class TachesAdapter extends RecyclerView.Adapter<TachesAdapter.MyViewHold
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Taches t = list.get(position);
 
-        holder.TacheNom.setText(R.string.task_name + " " + t.nom);
-        holder.TacheAvencement.setText(R.string.task_progress + " " + t.avencementFait.toString() + "%");
-        holder.TacheDateLimite.setText(R.string.task_limit + " " + t.dateLimite.toString());
-        holder.TacheTempsEcouler.setText(R.string.task_time + " " + t.TimeSpent.toString() );
+        holder.TacheNom.setText( context.getResources().getString(R.string.task_name) + " " + t.nom);
+        holder.TacheAvencement.setText(context.getResources().getString(R.string.task_progress) + " " + t.avencementFait.toString() + "%");
+        holder.TacheDateLimite.setText(context.getResources().getString(R.string.task_limit) + " " + t.dateLimite.toString());
+        holder.TacheTempsEcouler.setText(context.getResources().getString(R.string.task_time) + " " + t.TimeSpent.toString() );
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
