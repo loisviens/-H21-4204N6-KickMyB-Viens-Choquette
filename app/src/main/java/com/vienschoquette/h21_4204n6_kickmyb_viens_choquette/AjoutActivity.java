@@ -82,7 +82,7 @@ public class AjoutActivity extends AppCompatActivity {
                         if (response.isSuccessful()) {
                             finish();
                         } else {
-                            Toast.makeText(getApplicationContext(), R.string.toast_Err_general, Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), R.string.toast_Err_name_taken, Toast.LENGTH_LONG).show();
                         }
                     }
 
@@ -122,7 +122,7 @@ public class AjoutActivity extends AppCompatActivity {
                     service.SignOUT().enqueue(new Callback<Void>() {
                         @Override
                         public void onResponse(Call<Void> call, Response<Void> response) {
-
+                            Toast.makeText(getApplicationContext(), R.string.logoff_message, Toast.LENGTH_LONG).show();
                         }
 
                         @Override

@@ -11,7 +11,7 @@
     <string name="con_password_hint">Mot de passe</string>
     <string name="con_signup_button">S\'INSCRIRE</string>
     <string name="con_error_wrong_id">Mauvais identifiant ou mot de passe</string>
-    <string name="con_error_invalid_signup">Identifiant deja utiliser ou mot de passe invalide</string>
+    <string name="con_error_invalid_signup">Identifiant déjà utilisé ou mot de passe différent</string>
     <string name="con_error_connection">Impossible de se connecter au serveur. Vérivier la connection internet</string>
     <string name="acc_title">Acceuil</string>
     <string name="acc_text">Bienvenue à la page d\'acceuil. Vous pouvez tout voir à partir d\'ici.</string>
@@ -33,4 +33,6 @@
     <string name="toast_Err_general">Une erreure est survenue la requête</string>
     <string name="toast_Err_list_refresh">Une erreure est survenue lors de la mise a jour de la liste</string>
     <string name="placeholder_name">Prénom</string>
+    <string name="toast_Err_name_taken">Erreure, ce nom existe déja</string>
+    <string name="logoff_message">Vous avez été déconnecté avec succès</string>
 </resources>

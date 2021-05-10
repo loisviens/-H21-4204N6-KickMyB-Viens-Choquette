@@ -92,6 +92,18 @@ public class AccueilActivity extends AppCompatActivity {
         binding.acceuilpBTNRetour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final Service service = RetrofitCookie.get();
+                service.SignOUT().enqueue(new Callback<Void>() {
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+                        Toast.makeText(getApplicationContext(), R.string.logoff_message, Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+                        Toast.makeText(getApplicationContext(), R.string.toast_Err_logoff_request, Toast.LENGTH_LONG).show();
+                    }
+                });
                 finish();
             }
         });
@@ -123,7 +135,7 @@ public class AccueilActivity extends AppCompatActivity {
                     service.SignOUT().enqueue(new Callback<Void>() {
                         @Override
                         public void onResponse(Call<Void> call, Response<Void> response) {
-
+                            Toast.makeText(getApplicationContext(), R.string.logoff_message, Toast.LENGTH_LONG).show();
                         }
 
                         @Override
