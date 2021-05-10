@@ -18,7 +18,7 @@
 
     <!--sign up & connection errors-->
     <string name="con_error_wrong_id">Wrong username or password</string>
-    <string name="con_error_invalid_signup">Username already taken or invalid password</string>
+    <string name="con_error_invalid_signup">Username already taken or passwords not the same</string>
     <string name="con_error_connection">Can\'t connect to server. Check internet connection</string>
 
     <!--Acceuil-->
@@ -49,7 +49,11 @@
     <string name="toast_Err_logoff_request">An error occurred while disconnecting</string>
     <string name="toast_Err_general">An error has occurend with the request</string>
     <string name="toast_Err_list_refresh">An error has occurend when refreshing the list</string>
+    <string name="toast_Err_name_taken">Error, the name exist already</string>
 
     <!--Place holders-->
     <string name="placeholder_name">Name</string>
+
+    <!--log off-->
+    <string name="logoff_message">You have been successfully logged off</string>
 </resources>

@@ -150,7 +150,7 @@ public class ConsultationActivity extends AppCompatActivity {
                     service.SignOUT().enqueue(new Callback<Void>() {
                         @Override
                         public void onResponse(Call<Void> call, Response<Void> response) {
-
+                            Toast.makeText(getApplicationContext(), R.string.logoff_message, Toast.LENGTH_LONG).show();
                         }
 
                         @Override
