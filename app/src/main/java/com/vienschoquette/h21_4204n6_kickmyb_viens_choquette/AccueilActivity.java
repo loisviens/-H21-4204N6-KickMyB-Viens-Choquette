@@ -219,7 +219,7 @@ public class AccueilActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        adapter = new TachesAdapter();
+        adapter = new TachesAdapter(AccueilActivity.this);
         recyclerView.setAdapter(adapter);
     }
 }
