@@ -15,6 +15,8 @@
     <string name="con_user_hint">Username</string>
     <string name="con_password_hint">Password</string>
     <string name="con_signup_button">SIGN UP</string>
+    <string name="con_con_title">Merci de patienter</string>
+    <string name="con_con_message">Connection au serveur, ceci peut etre long.</string>
 
     <!--sign up & connection errors-->
     <string name="con_error_wrong_id">Wrong username or password</string>
