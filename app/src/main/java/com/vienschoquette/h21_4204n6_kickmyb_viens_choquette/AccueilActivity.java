@@ -1,12 +1,15 @@
 package com.vienschoquette.h21_4204n6_kickmyb_viens_choquette;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.CookieManager;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,6 +46,9 @@ public class AccueilActivity extends AppCompatActivity {
     TachesAdapter adapter;
     ActionBarDrawerToggle actionbartoggle;
 
+    ProgressBar progress;
+
+    ProgressDialog progressD;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +71,6 @@ public class AccueilActivity extends AppCompatActivity {
         txt.setText(getIntent().getExtras().getString("Nom"));
 
         final ActionBar actionBar = getSupportActionBar();
-
 
         if (actionBar != null)
         {
@@ -234,4 +239,24 @@ public class AccueilActivity extends AppCompatActivity {
         adapter = new TachesAdapter(AccueilActivity.this);
         recyclerView.setAdapter(adapter);
     }
+
+    class DialogTask<A,B,C> extends AsyncTask<A,B,C> {
+
+        @Override
+        protected void onPostExecute(C c) {
+            progressD.dismiss();
+            super.onPostExecute(c);
+        }
+
+        @Override
+        protected C doInBackground(A... params) {
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+    }
+
 }
