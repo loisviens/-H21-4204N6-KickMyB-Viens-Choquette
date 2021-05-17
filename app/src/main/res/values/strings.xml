@@ -15,8 +15,8 @@
     <string name="con_user_hint">Username</string>
     <string name="con_password_hint">Password</string>
     <string name="con_signup_button">SIGN UP</string>
-    <string name="con_con_title">Merci de patienter</string>
-    <string name="con_con_message">Connection au serveur, ceci peut etre long.</string>
+    <string name="con_con_title">Please wait.</string>
+    <string name="con_con_message">Connecting to the server, this can take some time.</string>
 
     <!--sign up & connection errors-->
     <string name="con_error_wrong_id">Wrong username or password</string>
@@ -58,4 +58,8 @@
 
     <!--log off-->
     <string name="logoff_message">You have been successfully logged off</string>
+
+    <!--updating info-->
+    <string name="info_updating">Fetching information from server</string>
+    <string name="info_uploading">Uploading information to the server</string>
 </resources>

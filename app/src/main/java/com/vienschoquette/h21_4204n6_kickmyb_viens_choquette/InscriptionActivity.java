@@ -39,7 +39,7 @@ public class InscriptionActivity extends AppCompatActivity {
         binding.signupBTNinscrire.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+
                 progressD = ProgressDialog.show(InscriptionActivity.this, getText(R.string.con_con_title),
                         getText(R.string.con_con_message), true);
                 new InscriptionActivity.DialogTask<>().execute();
@@ -58,6 +58,7 @@ public class InscriptionActivity extends AppCompatActivity {
 
                             i.putExtra("Nom", binding.signupName.getText().toString());
                             startActivity(i);
+                            finish();
                         } else {
                             //identifiant incorrect
                             Toast.makeText(getApplicationContext(), R.string.con_error_invalid_signup , Toast.LENGTH_LONG).show();
@@ -83,18 +84,29 @@ public class InscriptionActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if ( progressD!=null && progressD.isShowing() )
+        {
+            progressD.cancel();
+        }
+    }
+
     class DialogTask<A,B,C> extends AsyncTask<A,B,C> {
 
         @Override
         protected void onPostExecute(C c) {
             progressD.dismiss();
+
             super.onPostExecute(c);
         }
 
         @Override
         protected C doInBackground(A... params) {
             try {
-                Thread.sleep(5);
+                Thread.sleep(2000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

@@ -1,7 +1,10 @@
 package com.vienschoquette.h21_4204n6_kickmyb_viens_choquette;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -35,11 +38,17 @@ public class ConsultationActivity extends AppCompatActivity {
     private ActivityConsultationBinding binding;
     ActionBarDrawerToggle actionbartoggle;
 
+    ProgressDialog progressD;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTitle(R.string.task_title);
 
+
+        progressD = ProgressDialog.show(ConsultationActivity.this, getText(R.string.con_con_title),
+                getText(R.string.info_updating), true);
+        new  ConsultationActivity.DialogTask<>().execute();
         //setTitle(getIntent().getStringExtra("Position"));
 
         binding = ActivityConsultationBinding.inflate(getLayoutInflater());
@@ -108,6 +117,9 @@ public class ConsultationActivity extends AppCompatActivity {
                     public void onResponse(Call<String> call, Response<String> response) {
                         binding.consultationProgressBar.setProgress(
                                 Integer.parseInt(binding.consultationTextProgressChange.getText().toString()));
+                        progressD = ProgressDialog.show(ConsultationActivity.this, getText(R.string.con_con_title),
+                                getText(R.string.info_uploading), true);
+                        new  ConsultationActivity.DialogTask<>().execute();
                     }
 
                     @Override
@@ -142,7 +154,7 @@ public class ConsultationActivity extends AppCompatActivity {
                 }
                 else if (item.getItemId() == R.id.nav_deconnection)
                 {
-                    finish();
+
                     Intent i = new Intent(ConsultationActivity.this, MainActivity.class);
                     startActivity(i);
                     //enleve le cookie de la session
@@ -150,6 +162,11 @@ public class ConsultationActivity extends AppCompatActivity {
                     service.SignOUT().enqueue(new Callback<Void>() {
                         @Override
                         public void onResponse(Call<Void> call, Response<Void> response) {
+
+                            progressD = ProgressDialog.show(ConsultationActivity.this, getText(R.string.con_con_title),
+                                    getText(R.string.info_uploading), true);
+                            new ConsultationActivity.DialogTasklogoff<>().execute();
+
                             Toast.makeText(getApplicationContext(), R.string.logoff_message, Toast.LENGTH_LONG).show();
                         }
 
@@ -184,6 +201,53 @@ public class ConsultationActivity extends AppCompatActivity {
     public void onConfigurationChanged(@NonNull Configuration newConfig) {
         actionbartoggle.onConfigurationChanged(newConfig);
         super.onConfigurationChanged(newConfig);
+    }
+
+    protected void onPause() {
+        super.onPause();
+        if ( progressD!=null && progressD.isShowing() )
+        {
+            progressD.cancel();
+        }
+    }
+
+    class DialogTask<A,B,C> extends AsyncTask<A,B,C> {
+
+        @Override
+        protected void onPostExecute(C c) {
+            progressD.dismiss();
+            super.onPostExecute(c);
+        }
+
+        @Override
+        protected C doInBackground(A... params) {
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+    }
+
+    class DialogTasklogoff<A,B,C> extends AsyncTask<A,B,C> {
+
+        @Override
+        protected void onPostExecute(C c) {
+            progressD.dismiss();
+            finish();
+            super.onPostExecute(c);
+        }
+
+        @Override
+        protected C doInBackground(A... params) {
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
     }
 
 }

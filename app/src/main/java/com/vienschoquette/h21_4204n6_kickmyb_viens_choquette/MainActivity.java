@@ -81,6 +81,14 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if ( progressD!=null && progressD.isShowing() )
+        {
+            progressD.cancel();
+        }
+    }
     class DialogTask<A,B,C> extends AsyncTask<A,B,C> {
 
         @Override

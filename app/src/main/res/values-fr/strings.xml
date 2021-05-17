@@ -35,6 +35,8 @@
     <string name="placeholder_name">Prénom</string>
     <string name="toast_Err_name_taken">Erreure, ce nom existe déja</string>
     <string name="logoff_message">Vous avez été déconnecté avec succès</string>
-    <string name="con_con_title">Please wait.</string>
-    <string name="con_con_message">Connecting to the server, this can take some time.</string>
+    <string name="con_con_title">Merci de patienter</string>
+    <string name="con_con_message">Connection au serveur, ceci peut etre long.</string>
+    <string name="info_updating">Obtention de données du serveur.</string>
+    <string name="info_uploading">Envoi de données au serveur.</string>
 </resources>

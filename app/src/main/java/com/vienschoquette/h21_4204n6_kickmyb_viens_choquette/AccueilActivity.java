@@ -102,6 +102,9 @@ public class AccueilActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
                         Toast.makeText(getApplicationContext(), R.string.logoff_message, Toast.LENGTH_LONG).show();
+                        progressD = ProgressDialog.show(AccueilActivity.this, getText(R.string.con_con_title),
+                                getText(R.string.info_uploading), true);
+                        new AccueilActivity.DialogTasklogoff<>().execute();
                     }
 
                     @Override
@@ -109,7 +112,6 @@ public class AccueilActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), R.string.toast_Err_logoff_request, Toast.LENGTH_LONG).show();
                     }
                 });
-                finish();
             }
         });
         binding.acceuilpBTNAjout.setOnClickListener(new View.OnClickListener() {
@@ -141,6 +143,9 @@ public class AccueilActivity extends AppCompatActivity {
                         @Override
                         public void onResponse(Call<Void> call, Response<Void> response) {
                             Toast.makeText(getApplicationContext(), R.string.logoff_message, Toast.LENGTH_LONG).show();
+                            progressD = ProgressDialog.show(AccueilActivity.this, getText(R.string.con_con_title),
+                                    getText(R.string.info_uploading), true);
+                            new AccueilActivity.DialogTasklogoff<>().execute();
                         }
 
                         @Override
@@ -148,7 +153,7 @@ public class AccueilActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), R.string.toast_Err_logoff_request, Toast.LENGTH_LONG).show();
                         }
                     });
-                    finish();
+
                 }
                  binding.drawerLayout.closeDrawers();
                 return false;
@@ -192,6 +197,10 @@ public class AccueilActivity extends AppCompatActivity {
     protected void onPostResume() {
         super.onPostResume();
         MAJListView();
+
+        progressD = ProgressDialog.show(AccueilActivity.this, getText(R.string.con_con_title),
+                getText(R.string.info_updating), true);
+        new  AccueilActivity.DialogTask<>().execute();
     }
 
     private void MAJListView()
@@ -240,18 +249,47 @@ public class AccueilActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if ( progressD!=null && progressD.isShowing() )
+        {
+            progressD.cancel();
+        }
+    }
+
     class DialogTask<A,B,C> extends AsyncTask<A,B,C> {
 
         @Override
         protected void onPostExecute(C c) {
             progressD.dismiss();
+
             super.onPostExecute(c);
         }
 
         @Override
         protected C doInBackground(A... params) {
             try {
-                Thread.sleep(5000);
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+    }
+    class DialogTasklogoff<A,B,C> extends AsyncTask<A,B,C> {
+
+        @Override
+        protected void onPostExecute(C c) {
+            progressD.dismiss();
+            finish();
+            super.onPostExecute(c);
+        }
+
+        @Override
+        protected C doInBackground(A... params) {
+            try {
+                Thread.sleep(2000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

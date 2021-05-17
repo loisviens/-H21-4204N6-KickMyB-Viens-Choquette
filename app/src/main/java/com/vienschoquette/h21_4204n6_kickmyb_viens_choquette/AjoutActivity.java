@@ -1,7 +1,9 @@
 package com.vienschoquette.h21_4204n6_kickmyb_viens_choquette;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -30,6 +32,8 @@ import retrofit2.Response;
 public class AjoutActivity extends AppCompatActivity {
     private ActivityAjoutBinding binding;
     ActionBarDrawerToggle actionbartoggle;
+
+    ProgressDialog progressD;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,7 +84,10 @@ public class AjoutActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call call, Response response) {
                         if (response.isSuccessful()) {
-                            finish();
+                            progressD = ProgressDialog.show(AjoutActivity.this, getText(R.string.con_con_title),
+                                    getText(R.string.info_updating), true);
+                            new  AjoutActivity.DialogTask<>().execute();
+
                         } else {
                             Toast.makeText(getApplicationContext(), R.string.toast_Err_name_taken, Toast.LENGTH_LONG).show();
                         }
@@ -114,7 +121,6 @@ public class AjoutActivity extends AppCompatActivity {
                 }
                 else if (item.getItemId() == R.id.nav_deconnection)
                 {
-                    finish();
                     Intent i = new Intent(AjoutActivity.this, MainActivity.class);
                     startActivity(i);
                     //enleve le cookie de la session
@@ -123,6 +129,9 @@ public class AjoutActivity extends AppCompatActivity {
                         @Override
                         public void onResponse(Call<Void> call, Response<Void> response) {
                             Toast.makeText(getApplicationContext(), R.string.logoff_message, Toast.LENGTH_LONG).show();
+                            progressD = ProgressDialog.show(AjoutActivity.this, getText(R.string.con_con_title),
+                                    getText(R.string.info_uploading), true);
+                            new AjoutActivity.DialogTask<>().execute();
                         }
 
                         @Override
@@ -155,5 +164,33 @@ public class AjoutActivity extends AppCompatActivity {
     public void onConfigurationChanged(@NonNull Configuration newConfig) {
         actionbartoggle.onConfigurationChanged(newConfig);
         super.onConfigurationChanged(newConfig);
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if ( progressD!=null && progressD.isShowing() )
+        {
+            progressD.cancel();
+        }
+    }
+
+    class DialogTask<A,B,C> extends AsyncTask<A,B,C> {
+
+        @Override
+        protected void onPostExecute(C c) {
+            progressD.dismiss();
+            finish();
+            super.onPostExecute(c);
+        }
+
+        @Override
+        protected C doInBackground(A... params) {
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
     }
 }
